@@ -1,0 +1,25 @@
+import requests
+from bs4 import BeautifulSoup
+from json import dumps
+
+FEED_URL = 'https://rss.sciencedaily.com/top/environment.xml'
+
+def strip_content(x) = x.content
+
+def feeds() = FEED_URL |> requests.get |> strip_content
+
+def to_xml(content) = BeautifulSoup(content)
+
+def items(xml) = 'item' |> xml.findAll
+
+def to_tuple(item) = dict(title = item.title.string,
+                          link = item.link.string,
+                          description = item.description.text,
+                          pubdate = item.pubdate.string,
+                          guid = item.guid.string)
+
+def dump(x) = dumps(list(x))
+
+def map_feeds(items) = items |> map$(to_tuple)
+
+def get() = feeds() |> to_xml |> items |> map_feeds

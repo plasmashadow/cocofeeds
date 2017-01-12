@@ -1,0 +1,26 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Bungee" rel="stylesheet">
+  <link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1 class="main-header">Coco Feeds</h1>
+<h4 class="main-header"> (Feeds on environment) </h4>
+	<main>
+		<div class="main-wrapper">
+			<div class="single-col-wrapper">
+        {% for feed in feeds%}
+				<div class="col-card">
+					<div class="card-header">
+						<h2 class="card-title">
+              <a href={{ feed['link'] }}>{{feed['title']}}</a></h2>
+					</div>
+					<div class="card-body">
+						<p class="card-text">{{feed['description']}}</p>
+					</div>
+        </div>
+        {% end %}
+			</div>
+		</div>
+	</main>
+</body>

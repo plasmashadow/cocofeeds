@@ -1,0 +1,6 @@
+venv
+__pycache__
+cocofeeds/**/*.py
+*.pyc
+main.py
+__coconut__.py
